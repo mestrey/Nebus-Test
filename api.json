@@ -1,0 +1,236 @@
+{
+    "info": {
+        "name": "Organization Directory API",
+        "description": "API for managing organizations, buildings, and activities.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get Organizations by Building",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authToken}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/buildings/1/organizations",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["buildings", ":buildingId", "organizations"],
+                    "query": [],
+                    "variable": [
+                        {
+                            "id": "buildingId",
+                            "value": "1",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Organizations by Activity",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authToken}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/activities/1/organizations",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["activities", ":activityId", "organizations"],
+                    "query": [],
+                    "variable": [
+                        {
+                            "id": "activityId",
+                            "value": "1",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Nearby Organizations",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authToken}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/organizations/nearby?latitude=55.7512&longitude=37.6184&radius=5",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["organizations", "nearby"],
+                    "query": [
+                        {
+                            "key": "latitude",
+                            "value": "55.7512"
+                        },
+                        {
+                            "key": "longitude",
+                            "value": "37.6184"
+                        },
+                        {
+                            "key": "radius",
+                            "value": "5"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get All Buildings",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authToken}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/buildings",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["buildings"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Organization by ID",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authToken}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/organizations/1",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["organizations", ":organizationId"],
+                    "variable": [
+                        {
+                            "id": "organizationId",
+                            "value": "1",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Search Organizations by Activity (Including Child Activities)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authToken}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/activities/1/search-organizations",
+                    "host": ["{{baseUrl}}"],
+                    "path": [
+                        "activities",
+                        ":activityId",
+                        "search-organizations"
+                    ],
+                    "variable": [
+                        {
+                            "id": "activityId",
+                            "value": "1",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Search Organizations by Name",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authToken}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/organizations/search?query=Рога",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["organizations", "search"],
+                    "query": [
+                        {
+                            "key": "query",
+                            "value": "Рога"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8000/api",
+            "type": "string"
+        },
+        {
+            "key": "authToken",
+            "value": "your-auth-token-here",
+            "type": "string"
+        }
+    ]
+}
